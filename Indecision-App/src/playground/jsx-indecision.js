@@ -49,3 +49,28 @@ const renderApp = () => {
 }
 
 renderApp();
+
+
+const obj = {
+    name : 'Vikram',
+    getName(){
+        return this.name;
+    }
+}
+
+console.log(obj.getName());//Vikram
+
+const getName = obj.getName.bind(obj);
+
+console.log(getName());//uncaught reference error
+
+//binding got broken the context will get broken
+
+const func = function(){
+    console.log(this); //undefined
+}
+
+func(); 
+
+// so we can use bind which takes the first argument of this which should be refered
+
