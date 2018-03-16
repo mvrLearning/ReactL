@@ -55,3 +55,7 @@ can alos render array of jsx like ol li elements
     {
        numbers.map((el)=><p key={el}>Number: {el}</p>) 
            }
+******************************************************************
+WebPack --> bundler
+//we get a single js file which contains all the dependencies and the rest of js files
+single req for single file

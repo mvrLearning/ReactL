@@ -6,10 +6,21 @@ constructor(props){
     this.handleMinusOne = this.handleMinusOne.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.state={
-        count:0
+        count:props.count
     }
 }
-
+componentDidMount(){
+    const stringCount = localStorage.getItem('count');
+    const count = parseInt(stringCount,10);
+        if(!isNaN(count)){
+            this.setState(()=>({count}))
+        }
+}
+componentDidUpdate(prevProps,prevState){
+    if (prevState.count !== this.state.count) {
+        localStorage.setItem('count',this.state.count);
+    }
+}
 handleAddOne(){
 this.setState((prevState)=>{ //setState can ony be used to update the value of the state
     return{
@@ -53,6 +64,7 @@ handleReset(){
         )
     }
 }
+
 
 ReactDOM.render(<Counter />,document.getElementById('app'));
 
